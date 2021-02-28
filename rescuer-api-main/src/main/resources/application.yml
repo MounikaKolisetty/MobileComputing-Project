@@ -1,0 +1,32 @@
+postgres:
+  datasource:
+    url: jdbc:postgresql://ec2-52-7-168-69.compute-1.amazonaws.com:5432/ddbkh7uankfmlj?user=pncrgtkqoiaxrl&password=fe426b669ebd6af0e1569868b66a44758c8e6400c8221f718e9ded8f94675b5f
+    username: pncrgtkqoiaxrl
+    password: fe426b669ebd6af0e1569868b66a44758c8e6400c8221f718e9ded8f94675b5f
+
+server:
+  port: 8080
+
+
+mongo:
+  datasource:
+    connectionstring: mongodb+srv://kotla:rescuer_app@cluster0.rdlu6.mongodb.net/rescuer_db?retryWrites=true&w=majority
+    database: rescuer_db
+
+app-settings:
+  allocation-service-initial-delay: 300000 #5 minutes
+  allocation-service-fixed-delay: 900000 #15 minutes
+
+security:
+  config:
+    secret: SecretKeyToGenJWTs
+    expirationtime: 864_000
+    reftreshexpirationtime: 864_000_000
+    headerstring: Authorization
+    signupurl: /user/sign-up
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB

@@ -1,0 +1,35 @@
+postgres:
+  datasource:
+    url: ${POSTGRES_DB_URL}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+
+mongo:
+  datasource:
+    connectionstring: ${MONGO_DB_URL}
+    database: ${monGO_DB_NAME}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+app-settings:
+  allocation-service-initial-delay: 300000 #5 minutes
+  allocation-service-fixed-delay: 900000 #15 minutes
+
+security:
+  config:
+    secret: SecretKeyToGenJWTs
+    expirationtime: 864_000
+    reftreshexpirationtime: 864_000_000
+    headerstring: Authorization
+    signupurl: /user/sign-up
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
