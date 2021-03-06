@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -102,10 +103,12 @@ public class TicketService {
      */
     public Set<GetAllTicketsDTO> getAllClosedTickets(String userName) {
         log.info("Received request for getting all tickets for user {}", userName);
-        Optional<UserTicketStats> userTicketStatsOptional = Optional.ofNullable(
-                this.userTicketStatsRepository.findByUserNameAndTicketsAssociated_TicketStatus(
-                        userName, TicketStatus.CLOSE, Sort.by(Sort.Direction.DESC, "createdAt")));
-        return this.mapToGetAllTicketsDTO(userTicketStatsOptional);
+        Set<Ticket> closedTickets = this.ticketRepository
+                .findAllByTicketStatusAndAllocatedTo_userName(TicketStatus.CLOSE, userName);
+        if (!CollectionUtils.isEmpty(closedTickets)) {
+            return closedTickets.stream().map(TicketMappers.mapToGetAllTickets).collect(Collectors.toSet());
+        }
+        return Collections.emptySet();
     }
 
     /**
@@ -129,9 +132,12 @@ public class TicketService {
      */
     public Set<GetAllTicketsDTO> getAllInProgressTickets(String userName) {
         log.info("Received request for getting all tickets for user {}", userName);
-        Optional<UserTicketStats> userTicketStatsOptional = Optional.ofNullable(this.userTicketStatsRepository.findByUserNameAndTicketsAssociated_TicketStatus(
-                userName, TicketStatus.IN_PROGRESS, Sort.by(Sort.Direction.DESC, "createdAt")));
-        return this.mapToGetAllTicketsDTO(userTicketStatsOptional);
+        Set<Ticket> inprogressTickets = this.ticketRepository
+                .findAllByTicketStatusAndAllocatedTo_userName(TicketStatus.IN_PROGRESS, userName);
+        if (!CollectionUtils.isEmpty(inprogressTickets)) {
+            return inprogressTickets.stream().map(TicketMappers.mapToGetAllTickets).collect(Collectors.toSet());
+        }
+        return Collections.emptySet();
     }
 
     private Set<GetAllTicketsDTO> mapToGetAllTicketsDTO(Optional<UserTicketStats> userTicketStatsOptional) {
