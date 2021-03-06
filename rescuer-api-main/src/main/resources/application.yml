@@ -1,8 +1,8 @@
 postgres:
   datasource:
-    url: jdbc:postgresql://ec2-52-7-168-69.compute-1.amazonaws.com:5432/ddbkh7uankfmlj?user=pncrgtkqoiaxrl&password=fe426b669ebd6af0e1569868b66a44758c8e6400c8221f718e9ded8f94675b5f
-    username: pncrgtkqoiaxrl
-    password: fe426b669ebd6af0e1569868b66a44758c8e6400c8221f718e9ded8f94675b5f
+    url: postgres://pzcbnmrofptqdn:e75c3e9565088021cca5d0d3fcf91a5ac0c9368aa1736e357a09b98330ff79ab@ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/d8umb7gebd4hbo
+    username: pzcbnmrofptqdn
+    password: e75c3e9565088021cca5d0d3fcf91a5ac0c9368aa1736e357a09b98330ff79ab
 
 server:
   port: 8080
