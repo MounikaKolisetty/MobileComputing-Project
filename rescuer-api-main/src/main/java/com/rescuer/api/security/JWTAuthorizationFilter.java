@@ -39,7 +39,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(req, res);
             return;
         }
-        UserZoneIdHolder.setUserZoneIdHolder(ZoneIdConstant.ASIA_KOLKATA);
+        UserZoneIdHolder.setUserZoneIdHolder(ZoneIdConstant.CENTRAL_EUROPE);
         UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(req, res);
