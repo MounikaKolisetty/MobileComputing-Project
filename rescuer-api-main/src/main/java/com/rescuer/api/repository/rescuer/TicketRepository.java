@@ -29,4 +29,7 @@ public interface TicketRepository extends JpaRepository<Ticket, UUID> {
     List<Ticket> findAllByTicketStatus(TicketStatus ticketStatus, Sort sort);
 
     Ticket findByUniqueIdentifierAndAllocatedToIsNull(UUID ticketId);
+
+    Set<Ticket> findAllByTicketStatusAndAllocatedTo_userName(TicketStatus status, String userName);
+    
 }
