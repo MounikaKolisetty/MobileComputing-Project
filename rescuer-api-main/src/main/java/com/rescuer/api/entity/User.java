@@ -41,7 +41,7 @@ public class User extends BaseEntity implements UserDetails {
         User convertedUser = UserTicketStats.builder().userName(user.getUserName())
                 .password(bCryptPasswordEncoder.encode(user.getPassword()))
                 .isUserActive(user.getIsUserActive())
-                .zoneId(ZoneIdConstant.CENTRAL_EUROPE)
+                .zoneId(ZoneIdConstant.ASIA_KOLKATA)
                 .build();
         UserTicketStats userTicketStats = new UserTicketStats();
         userTicketStats.setUserDetails(convertedUser);
