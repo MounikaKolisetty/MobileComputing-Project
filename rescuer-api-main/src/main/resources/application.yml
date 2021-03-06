@@ -1,6 +1,6 @@
 postgres:
   datasource:
-    url: postgres://pzcbnmrofptqdn:e75c3e9565088021cca5d0d3fcf91a5ac0c9368aa1736e357a09b98330ff79ab@ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/d8umb7gebd4hbo
+    url: jdbc:postgresql://ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/d8umb7gebd4hbo?user=pzcbnmrofptqdn&password=e75c3e9565088021cca5d0d3fcf91a5ac0c9368aa1736e357a09b98330ff79ab
     username: pzcbnmrofptqdn
     password: e75c3e9565088021cca5d0d3fcf91a5ac0c9368aa1736e357a09b98330ff79ab
 
